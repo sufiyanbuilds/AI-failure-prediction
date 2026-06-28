@@ -620,6 +620,12 @@ button:hover{
     box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
 
+.charts-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+}
+
 .chart-header{
     display:flex;
     justify-content:space-between;
@@ -667,7 +673,7 @@ button:hover{
 }
 
 .high .stat-icon{
-    color:#ef4444;
+    color:#9c0202;
 }
 
 .med .stat-icon{
@@ -675,11 +681,11 @@ button:hover{
 }
 
 .low .stat-icon{
-    color:#22c55e;
+    color:#02a43e;
 }
 
 .pending .stat-icon{
-    color:#f59e0b;
+    color:#ea3333;
 }
 
 .progress .stat-icon{
@@ -769,4 +775,28 @@ button:hover{
     margin:6px 0 0;
     color:#94a3b8;
     font-size:14px;
+}
+
+.pdf-btn{
+    margin-left:8px;
+    padding:8px 12px;
+    border:none;
+    border-radius:8px;
+    background:#16a34a;
+    color:white;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:600;
+    transition:.25s ease;
+}
+
+.pdf-btn:hover{
+    background:#15803d;
+    transform:translateY(-2px);
+}
+
+@media (max-width:900px){
+    .charts-grid{
+        grid-template-columns:1fr;
+    }
 }

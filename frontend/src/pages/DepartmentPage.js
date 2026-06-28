@@ -3,17 +3,20 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchAllPredictions, updatePredictionStatus } from "../services/api";
 import DashboardCharts from "../components/DashboardCharts";
+import StatusChart from "../components/StatusChart";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 import {
   FaChartBar,
   FaExclamationTriangle,
   FaExclamationCircle,
-  FaCheckCircle,
+  FaCheck,
   FaClock,
-  FaSyncAlt,
-  FaCheckDouble
+  FaTools,
+  FaAward,
+  FaShieldAlt,
+  FaThumbsUp
 } from "react-icons/fa";
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
 
 const RISK_CFG = {
   High:   { color:"#ef4444", bg:"rgba(239,68,68,0.15)",  border:"rgba(239,68,68,0.4)"  },
@@ -134,6 +137,43 @@ export default function DepartmentPage() {
     doc.save("RoadSenseAI_Report.pdf");
   };
 
+  const exportSinglePDF = (report) => {
+      const doc = new jsPDF();
+
+      doc.setFontSize(20);
+      doc.setTextColor(37, 99, 235);
+      doc.text("RoadSense AI", 14, 20);
+
+      doc.setFontSize(14);
+      doc.setTextColor(0, 0, 0);
+      doc.text("Road Infrastructure Failure Report", 14, 30);
+
+      const details = [
+        ["Location", report.location || "-"],
+        ["Reported By", report.reported_by || "-"],
+        ["Risk Level", report.risk || "-"],
+        ["Probability", `${report.probability?.toFixed(1) || 0}%`],
+        ["Road Age", `${report.road_age || "-"} yr`],
+        ["Potholes", report.potholes ?? "-"],
+        ["Cracks", `${report.cracks ?? "-"} m`],
+        ["Status", report.status || "-"],
+        ["Department Note", report.note || "-"],
+        ["Submitted", fmtTime(report.timestamp)]
+      ];
+
+      autoTable(doc, {
+        startY: 40,
+        theme: "grid",
+        head: [["Field", "Value"]],
+        body: details,
+        headStyles: {
+          fillColor: [37, 99, 235]
+        }
+      });
+
+      doc.save(`Road_Report_${report.location || "Report"}.pdf`);
+    };
+
   const handleUpdate = async () => {
     if (!selected) return;
     setUpdating(true);
@@ -202,19 +242,34 @@ export default function DepartmentPage() {
   
           <div className="stat-card high"><div className="stat-icon"><FaExclamationTriangle /></div><div className="stat-num" style={{color:"#ef4444"}}>{s.high||0}</div><div className="stat-label">High Risk</div></div>
           <div className="stat-card med"><div className="stat-icon"><FaExclamationCircle /></div><div className="stat-num" style={{color:"#f59e0b"}}>{s.medium||0}</div><div className="stat-label">Medium Risk</div></div>
-          <div className="stat-card low"><div className="stat-icon"><FaCheckCircle /></div><div className="stat-num" style={{color:"#22c55e"}}>{s.low||0}</div><div className="stat-label">Low Risk</div></div>
-          <div className="stat-card pending"><div className="stat-icon"><FaClock /></div><div className="stat-num" style={{color:"#f59e0b"}}>{s.pending||0}</div><div className="stat-label">Pending</div></div>
-          <div className="stat-card progress"><div className="stat-icon"><FaSyncAlt /></div><div className="stat-num" style={{color:"#3b82f6"}}>{s.in_progress||0}</div><div className="stat-label">In Progress</div></div>
-          <div className="stat-card resolved"><div className="stat-icon"><FaCheckDouble /></div><div className="stat-num" style={{color:"#22c55e"}}>{s.resolved||0}</div><div className="stat-label">Resolved</div></div>
+          <div className="stat-card low"><div className="stat-icon"><FaShieldAlt /></div><div className="stat-num" style={{color:"#22c55e"}}>{s.low||0}</div><div className="stat-label">Low Risk</div></div>
+          <div className="stat-card pending"><div className="stat-icon"><FaClock /></div><div className="stat-num" style={{color:"#ea3333"}}>{s.pending||0}</div><div className="stat-label">Pending</div></div>
+          <div className="stat-card progress"><div className="stat-icon"><FaTools /></div><div className="stat-num" style={{color:"#3b82f6"}}>{s.in_progress||0}</div><div className="stat-label">In Progress</div></div>
+          <div className="stat-card resolved"><div className="stat-icon"><FaCheck /></div><div className="stat-num" style={{color:"#22c55e"}}>{s.resolved||0}</div><div className="stat-label">Resolved</div></div>
 
         </div>
 
-        <div className="chart-section">
-          <div className="chart-header">
-            <h3>Risk Level Distribution</h3>
-            <span>Total: {s.total || 0} Reports</span>
+        <div className="charts-grid">
+
+          {/* Risk Chart */}
+          <div className="chart-section">
+            <div className="chart-header">
+              <h3>Risk Level Distribution</h3>
+              <span>Total: {data.stats?.total || 0} Reports</span>
+            </div>
+
+            <DashboardCharts stats={data.stats} />
           </div>
-          <DashboardCharts stats={data.stats} />
+
+          {/* Status Chart */}
+          <div className="chart-section">
+            <div className="chart-header">
+              <h3>Report Status</h3>
+            </div>
+
+            <StatusChart stats={data.stats} />
+          </div>
+
         </div>
 
         {/* Filters */}
@@ -303,6 +358,7 @@ export default function DepartmentPage() {
                         <td className="timestamp-cell">{fmtTime(row.timestamp)}</td>
                         <td>
                           <button className="edit-btn" onClick={() => openEdit(row)}>Update</button>
+                          <button className="pdf-btn" onClick={() => exportSinglePDF(row)}>📄 PDF</button>
                         </td>
                       </tr>
                     );

@@ -14,18 +14,18 @@ export default function DashboardCharts({ stats }) {
 
   const data = [
     {
-      name: "High",
-      value: stats.high || 0,
+      name: "Pending",
+      value: stats.pending || 0,
       fill: "#9c0202"
     },
     {
-      name: "Medium",
-      value: stats.medium || 0,
+      name: "In Progress",
+      value: stats.in_progress || 0,
       fill: "#f59e0b"
     },
     {
-      name: "Low",
-      value: stats.low || 0,
+      name: "Resolved",
+      value: stats.resolved || 0,
       fill: "#02a43e"
     }
   ];
