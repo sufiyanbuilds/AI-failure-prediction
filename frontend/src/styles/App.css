@@ -346,6 +346,8 @@ body {
 .table-row:last-child { border-bottom: none; }
 .table-row:hover { background: rgba(59,130,246,0.05); }
 .history-table td { padding: 12px 14px; color: var(--text-secondary); white-space: nowrap; }
+.tbody tr{transition: all .25s ease;}
+.tbody tr:hover{background: rgba(59,130,246,.08);}
 .row-num { color: var(--text-dim); font-size: 10px; }
 
 .prob-cell { display: flex; flex-direction: column; gap: 4px; min-width: 80px; }
@@ -510,6 +512,14 @@ body {
     box-shadow:0 0 18px rgba(59,130,246,.45);
 }
 
+.stat-card{
+    transition: all .3s ease;
+}
+
+.stat-card:hover{
+    transform: translateY(-6px);
+}
+
 /* ═══════════════════════════════════════════════════════════
    DEPARTMENT — FILTERS
 ═══════════════════════════════════════════════════════════ */
@@ -538,6 +548,14 @@ body {
   white-space: nowrap;
 }
 .edit-btn:hover { background: rgba(167,139,250,0.18); transform: translateY(-1px); }
+
+button{
+    transition: all .25s ease;
+}
+
+button:hover{
+    transform: translateY(-2px);
+}
 
 /* ═══════════════════════════════════════════════════════════
    UPDATE TOAST
@@ -696,4 +714,59 @@ body {
 
 .search-box input::placeholder{
     color:#94a3b8;
+}
+
+.search-box input{
+    transition:.3s;
+}
+
+.search-box input:focus{
+    transform:scale(1.01);
+}
+
+.export-btn{
+    padding:12px 20px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+    white-space:nowrap;
+}
+
+.export-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 20px rgba(37,99,235,.35);
+}
+
+.export-btn:active{
+    transform:scale(.98);
+}
+
+/* ---------- Report Header ---------- */
+
+.report-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
+    padding-bottom:16px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    gap:20px;
+}
+
+.report-header h3{
+    margin:0;
+    color:#fff;
+    font-size:24px;
+    font-weight:700;
+}
+
+.report-header p{
+    margin:6px 0 0;
+    color:#94a3b8;
+    font-size:14px;
 }

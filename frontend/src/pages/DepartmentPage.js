@@ -12,6 +12,8 @@ import {
   FaSyncAlt,
   FaCheckDouble
 } from "react-icons/fa";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 const RISK_CFG = {
   High:   { color:"#ef4444", bg:"rgba(239,68,68,0.15)",  border:"rgba(239,68,68,0.4)"  },
@@ -86,6 +88,50 @@ export default function DepartmentPage() {
     setNoteText(pred.department_note || "");
     setNewStatus(pred.status || "Pending");
     setUpdateMsg("");
+  };
+
+  const exportPDF = () => {
+    const doc = new jsPDF();
+
+    // Title
+    doc.setFontSize(20);
+    doc.text("RoadSense AI - Road Failure Report", 14, 20);
+
+    // Date
+    doc.setFontSize(10);
+    doc.text(`Generated: ${new Date().toLocaleString()}`, 14, 28);
+
+    // Summary
+    doc.text(`Total Reports: ${filtered.length}`, 14, 35);
+
+    // Table
+    autoTable(doc, {
+      startY: 42,
+      head: [[
+        "Location",
+        "Reporter",
+        "Risk",
+        "Probability",
+        "Status",
+        "Date"
+      ]],
+      body: filtered.map((row) => [
+        row.location || "-",
+        row.reported_by || "-",
+        row.risk,
+        `${row.probability?.toFixed(1)}%`,
+        row.status,
+        fmtTime(row.timestamp)
+      ]),
+      styles: {
+        fontSize: 9
+      },
+      headStyles: {
+        fillColor: [37, 99, 235]
+      }
+    });
+
+    doc.save("RoadSenseAI_Report.pdf");
   };
 
   const handleUpdate = async () => {
@@ -197,7 +243,7 @@ export default function DepartmentPage() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          
+
         </div>
 
         {/* Success message */}
@@ -208,7 +254,21 @@ export default function DepartmentPage() {
         )}
 
         {/* Table */}
-        <div className="history-section" style={{marginTop:0}}>
+        <div className="report-header">
+
+          <div>
+            <h3>Road Reports</h3>
+            <p>Manage and export road failure reports.</p>
+          </div>
+
+          <button
+            className="export-btn"
+            onClick={exportPDF}
+          >
+            📄 Export All Reports
+          </button>
+
+        </div>
           {loading ? (
             <div style={{textAlign:"center",padding:48,color:"#475569"}}>
               <div className="spinner large" style={{margin:"0 auto 12px"}} /> Loading reports…
@@ -251,7 +311,6 @@ export default function DepartmentPage() {
               </table>
             </div>
           )}
-        </div>
       </main>
 
       {/* Edit Modal */}
