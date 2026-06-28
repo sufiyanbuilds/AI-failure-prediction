@@ -44,10 +44,11 @@ export default function DepartmentPage() {
   const [loading,     setLoading]     = useState(true);
   const [riskFilter,  setRiskFilter]  = useState("All");
   const [statusFilter,setStatusFilter]= useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
   const [selected,    setSelected]    = useState(null);   // prediction being edited
   const [noteText,    setNoteText]    = useState("");
   const [newStatus,   setNewStatus]   = useState("");
-  const [updating,    setUpdating]    = useState(false);
+  const [updating,    setUpdating]    = useState(false);  
   const [updateMsg,   setUpdateMsg]   = useState("");
 
   const load = useCallback(async () => {
@@ -62,9 +63,23 @@ export default function DepartmentPage() {
   useEffect(() => { load(); }, [load]);
 
   // Client-side status filter
-  const filtered = data.predictions?.filter(p =>
-    statusFilter === "All" || p.status === statusFilter
-  ) || [];
+  const filtered = data.predictions?.filter((p) => {
+    const riskMatch =
+      riskFilter === "All" || p.risk === riskFilter;
+
+    const statusMatch =
+      statusFilter === "All" || p.status === statusFilter;
+
+    const searchMatch =
+      (p.location || "")
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      (p.reported_by || "")
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+
+    return riskMatch && statusMatch && searchMatch;
+  }) || [];
 
   const openEdit = (pred) => {
     setSelected(pred);
@@ -174,6 +189,15 @@ export default function DepartmentPage() {
                 onClick={() => setStatusFilter(s)}>{s}</button>
             ))}
           </div>
+          <div className="search-box">
+            <input
+              type="text"
+              placeholder="🔍 Search by Location or Reporter..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          
         </div>
 
         {/* Success message */}
