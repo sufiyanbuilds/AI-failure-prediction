@@ -46,19 +46,8 @@ export default function DashboardCharts({ stats }) {
           data={data}
         >
 
-          <CartesianGrid
-            strokeDasharray="3 3"
-            stroke="#334155"
-          />
-
-          <XAxis
-            dataKey="name"
-            stroke="#94a3b8"
-          />
-
-          <YAxis
-            stroke="#94a3b8"
-          />
+          <XAxis dataKey="name" axisLine={false} tickLine={false} />
+          <YAxis axisLine={false} tickLine={false} />
 
           <Tooltip
             cursor={{ fill: "rgba(59,130,246,0.08)" }}
@@ -86,7 +75,7 @@ export default function DashboardCharts({ stats }) {
           >
             <LabelList
               dataKey="value"
-              position="top"
+              position="insidetop"
               fill="#ffffff"
               fontWeight="bold"
             />

@@ -154,10 +154,10 @@ export default function DepartmentPage() {
         ["Risk Level", report.risk || "-"],
         ["Probability", `${report.probability?.toFixed(1) || 0}%`],
         ["Road Age", `${report.road_age || "-"} yr`],
-        ["Potholes", report.potholes ?? "-"],
-        ["Cracks", `${report.cracks ?? "-"} m`],
+        ["Potholes", report.pothole_count ?? "-"],
+        ["Cracks", `${report.crack_length ?? "-"} m`],
         ["Status", report.status || "-"],
-        ["Department Note", report.note || "-"],
+        ["Department Note", report.department_note || "-"],
         ["Submitted", fmtTime(report.timestamp)]
       ];
 
