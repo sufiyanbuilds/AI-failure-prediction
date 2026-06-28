@@ -7,15 +7,13 @@ import StatusChart from "../components/StatusChart";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import {
-  FaChartBar,
+
   FaExclamationTriangle,
   FaExclamationCircle,
   FaCheck,
   FaClock,
   FaTools,
-  FaAward,
-  FaShieldAlt,
-  FaThumbsUp
+  FaShieldAlt
 } from "react-icons/fa";
 
 const RISK_CFG = {
@@ -39,11 +37,6 @@ export default function DepartmentPage() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-   if(localStorage.getItem("admin") !== "true"){
-     navigate("/login");
-   }
-  }, [navigate]);
 
   const [data,        setData]        = useState({ stats:{}, predictions:[] });
   const [loading,     setLoading]     = useState(true);

@@ -800,3 +800,30 @@ button:hover{
         grid-template-columns:1fr;
     }
 }
+
+/* Password field */
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper .login-input {
+  width: 100%;
+  padding-right: 45px;
+  box-sizing: border-box;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.password-toggle:hover {
+  color: #38bdf8;
+}

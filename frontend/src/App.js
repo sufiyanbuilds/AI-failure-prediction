@@ -1,6 +1,12 @@
 // App.js — Route between Client and Department pages
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+  Navigate
+} from "react-router-dom";
 import ClientPage from "./pages/ClientPage";
 import DepartmentPage from "./pages/DepartmentPage";
 import LoginPage from "./pages/LoginPage";
@@ -35,13 +41,30 @@ function Landing() {
   );
 }
 
+function ProtectedRoute({ children }) {
+  const isLoggedIn = localStorage.getItem("admin") === "true";
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+}
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/client" element={<ClientPage />} />
-        <Route path="/department" element={<DepartmentPage />} />
+        <Route
+          path="/department"
+          element={
+            <ProtectedRoute>
+              <DepartmentPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
     </Router>

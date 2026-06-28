@@ -106,7 +106,7 @@ export default function ClientPage() {
         <div style={{display:"flex",alignItems:"center",gap:"16px"}}>
           <span className={`status-dot ${dbConnected ? "online" : "offline"}`} style={{width:8,height:8,borderRadius:"50%",background:dbConnected?"#22c55e":"#ef4444",boxShadow:`0 0 6px ${dbConnected?"#22c55e":"#ef4444"}`}} />
           <button className="refresh-btn" onClick={() => navigate("/")}>← Home</button>
-          <button className="refresh-btn" style={{color:"#a78bfa",borderColor:"rgba(167,139,250,0.35)"}} onClick={() => navigate("/department")}>Department View</button>
+          <button className="refresh-btn" style={{color:"#a78bfa",borderColor:"rgba(167,139,250,0.35)"}} onClick={() => navigate("/login")}>Department View</button>
         </div>
       </nav>
 
