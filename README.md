@@ -208,8 +208,9 @@ http://localhost:3000
 ---
 
 # 👨‍💻 Developer
-
-**Sufiyan**
+**Niyaz Ahmed**
+**Mohammed Sufiyan**
+**Thufeal Ahmed**
 
 Bachelor of Engineering (Computer Science and Engineering)
 
