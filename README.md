@@ -255,13 +255,11 @@ http://localhost:3000
 
 # 👨‍💻 Development Team
 
-This project was developed collaboratively by:
+This project was collaboratively developed as a Final Year Engineering Project by:
 
-| Team Member | Contribution |
-|-------------|--------------|
-| **Niyaz Ahmed** | Frontend Development, UI Design |
-| **Mohammed Sufiyan** | Machine Learning, FastAPI Backend, Dashboard Features |
-| **Thufeal Ahmed** | Database Integration, Testing, Documentation |
+- **Niyaz Ahmed**
+- **Mohammed Sufiyan**
+- **Thufeal Ahmed**
 
 **Degree:** Bachelor of Engineering (Computer Science and Engineering)
 
