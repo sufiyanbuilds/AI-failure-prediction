@@ -186,8 +186,6 @@ http://localhost:3000
 # 📸 Screenshots
 
 
-*# 📸 Screenshots
-
 <h2 align="center">🏠 Home Page</h2>
 
 <p align="center">
