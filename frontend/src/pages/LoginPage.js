@@ -9,21 +9,30 @@ export default function LoginPage() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   
-  const handleLogin = () => {
+  const handleLogin = async () => {
+    setError("");
 
-    if (username === "admin" && password === "admin123") {
-
-      localStorage.setItem("admin", "true");
-
-      navigate("/department");
-
-    } else {
-
-      alert("Invalid Username or Password");
-
+    if (!username || !password) {
+      setError("Please enter both username and password.");
+      return;
     }
+
+    setLoading(true);
+
+    // Small animation delay
+    setTimeout(() => {
+      if (username === "admin" && password === "admin123") {
+        localStorage.setItem("admin", "true");
+        navigate("/department");
+      } else {
+        setError("Invalid username or password.");
+        setLoading(false);
+      }
+    }, 700);
   };
 
   return (
@@ -42,6 +51,11 @@ export default function LoginPage() {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleLogin();
+            }
+          }}
         />
 
         <div className="password-wrapper">
@@ -51,6 +65,11 @@ export default function LoginPage() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleLogin();
+              }
+            }}
           />
 
           <span
@@ -61,11 +80,14 @@ export default function LoginPage() {
           </span>
         </div>
 
+        {error && <p className="login-error">{error}</p>}
+
         <button
           className="login-btn"
           onClick={handleLogin}
+          disabled={loading}
         >
-          Login
+          {loading ? "Logging in..." : "Login"}
         </button>
 
       </div>
