@@ -185,15 +185,20 @@ http://localhost:3000
 
 # 📸 Screenshots
 
-> Add screenshots here after uploading them to your GitHub repository.
+
 
 * Home Page
+![Home Page](screenshots/HomePage.png)
 * Citizen Portal
+![Citizen Portal](screenshots/ClientPage.png)
 * Login Page
+![Login Page](screenshots/LoginPage.png)
 * Department Dashboard
+![Department Dashboard](screenshots/DepartmentPage.png)
 * Analytics Dashboard
+![Analytics Dashboard](screenshots/AnalyticalDashboard.png)
 * PDF Export
-
+![PDF Export](screenshots/PDF.png)
 ---
 
 # 📈 Future Enhancements
