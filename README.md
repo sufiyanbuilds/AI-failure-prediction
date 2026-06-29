@@ -215,7 +215,7 @@ http://localhost:3000
 <h2 align="center">🏢 Department Dashboard</h2>
 
 <p align="center">
-  <img src="Screenshots/Dashboard.png" width="950">
+  <img src="Screenshots/DepartmentPage.png" width="950">
 </p>
 
 ---
@@ -223,7 +223,7 @@ http://localhost:3000
 <h2 align="center">📊 Analytics Dashboard</h2>
 
 <p align="center">
-  <img src="Screenshots/Analytics.png" width="950">
+  <img src="Screenshots/AnalyticalDashboard.png" width="950">
 </p>
 
 ---
@@ -239,7 +239,7 @@ http://localhost:3000
 <h2 align="center">📄 PDF Export</h2>
 
 <p align="center">
-  <img src="Screenshots/PDFExport.png" width="950">
+  <img src="Screenshots/PDF.png" width="950">
 </p>
 
 # 📈 Future Enhancements
