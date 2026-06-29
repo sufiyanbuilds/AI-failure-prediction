@@ -188,17 +188,17 @@ http://localhost:3000
 
 
 * Home Page
-![Home Page](screenshots/HomePage.png)
+![Home Page](Screenshots/HomePage.png)
 * Citizen Portal
-![Citizen Portal](screenshots/ClientPage.png)
+![Citizen Portal](Screenshots/ClientPage.png)
 * Login Page
-![Login Page](screenshots/LoginPage.png)
+![Login Page](Screenshots/LoginPage.png)
 * Department Dashboard
-![Department Dashboard](screenshots/DepartmentPage.png)
+![Department Dashboard](Screenshots/DepartmentPage.png)
 * Analytics Dashboard
-![Analytics Dashboard](screenshots/AnalyticalDashboard.png)
+![Analytics Dashboard](Screenshots/AnalyticalDashboard.png)
 * PDF Export
-![PDF Export](screenshots/PDF.png)
+![PDF Export](Screenshots/PDF.png)
 ---
 
 # 📈 Future Enhancements
