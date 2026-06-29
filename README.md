@@ -207,17 +207,20 @@ http://localhost:3000
 
 ---
 
-# 👨‍💻 Developer
-**Niyaz Ahmed**
-**Mohammed Sufiyan**
-**Thufeal Ahmed**
+# 👨‍💻 Development Team
 
-Bachelor of Engineering (Computer Science and Engineering)
+This project was developed collaboratively by:
 
-Final Year Project – 2026
+| Team Member | Contribution |
+|-------------|--------------|
+| **Niyaz Ahmed** | Frontend Development, UI Design |
+| **Mohammed Sufiyan** | Machine Learning, FastAPI Backend, Dashboard Features |
+| **Thufeal Ahmed** | Database Integration, Testing, Documentation |
 
----
+**Degree:** Bachelor of Engineering (Computer Science and Engineering)
+
+**Academic Year:** 2025–2026
 
 # 📄 License
 
-This project was developed for educational and academic purposes as a Final Year Engineering Project.
+This project was developed as a Final Year Engineering Project for educational and academic purposes. It is intended for learning, demonstration, and research.
