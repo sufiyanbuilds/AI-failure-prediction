@@ -197,6 +197,8 @@ http://localhost:3000
 ![Department Dashboard](Screenshots/DepartmentPage.png)
 * Analytics Dashboard
 ![Analytics Dashboard](Screenshots/AnalyticalDashboard.png)
+* Reports
+![Reports](Screenshots/Reports.png)
 * PDF Export
 ![PDF Export](Screenshots/PDF.png)
 ---
