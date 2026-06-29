@@ -263,7 +263,7 @@ This project was collaboratively developed as a Final Year Engineering Project b
 
 **Degree:** Bachelor of Engineering (Computer Science and Engineering)
 
-**Academic Year:** 2025–2026
+**Academic Year:** 2022–2026
 
 # 📄 License
 
