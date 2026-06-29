@@ -186,22 +186,61 @@ http://localhost:3000
 # 📸 Screenshots
 
 
+*# 📸 Screenshots
 
-* Home Page
-![Home Page](Screenshots/HomePage.png)
-* Citizen Portal
-![Citizen Portal](Screenshots/ClientPage.png)
-* Login Page
-![Login Page](Screenshots/LoginPage.png)
-* Department Dashboard
-![Department Dashboard](Screenshots/DepartmentPage.png)
-* Analytics Dashboard
-![Analytics Dashboard](Screenshots/AnalyticalDashboard.png)
-* Reports
-![Reports](Screenshots/Reports.png)
-* PDF Export
-![PDF Export](Screenshots/PDF.png)
+<h2 align="center">🏠 Home Page</h2>
+
+<p align="center">
+  <img src="Screenshots/HomePage.png" width="950">
+</p>
+
 ---
+
+<h2 align="center">👤 Citizen Portal</h2>
+
+<p align="center">
+  <img src="Screenshots/ClientPage.png" width="950">
+</p>
+
+---
+
+<h2 align="center">🔐 Login Page</h2>
+
+<p align="center">
+  <img src="Screenshots/LoginPage.png" width="950">
+</p>
+
+---
+
+<h2 align="center">🏢 Department Dashboard</h2>
+
+<p align="center">
+  <img src="Screenshots/Dashboard.png" width="950">
+</p>
+
+---
+
+<h2 align="center">📊 Analytics Dashboard</h2>
+
+<p align="center">
+  <img src="Screenshots/Analytics.png" width="950">
+</p>
+
+---
+
+<h2 align="center">📋 Reports</h2>
+
+<p align="center">
+  <img src="Screenshots/Reports.png" width="950">
+</p>
+
+---
+
+<h2 align="center">📄 PDF Export</h2>
+
+<p align="center">
+  <img src="Screenshots/PDFExport.png" width="950">
+</p>
 
 # 📈 Future Enhancements
 
